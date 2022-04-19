@@ -1,3 +1,5 @@
+from enum import unique
+from unicodedata import name
 from flask import Flask, render_template, redirect
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
@@ -23,18 +25,20 @@ session = Session()
 class Payers(db.Model):
     __tablename__ = 'Payers'
     id = Column('payer_id', db.Integer, primary_key=True)
-    name = Column(db.String, unique=True)
+    name = Column(db.String, nullable=False)
     points = Column(db.Integer, nullable=False)
     timestamp = Column(db.DateTime(timezone=True), default=func.now())
-    
-    def __init__(self, name, points, timestamp):
-        self.name = name
-        self.points = points
-        self.timestamp = timestamp
+        
+class Users(db.Model):
+    __tablename__ = 'Users'
+    id = Column('user_id', db.Integer, primary_key=True)
+    name = Column(db.String, unique=True)
+    points = Column(db.Integer, nullable=False)
         
 db.create_all()
 db.session.commit()
 admin.add_view(ModelView(Payers, db.session))
+admin.add_view(ModelView(Users, db.session))
 
 # 
 @app.route('/')
