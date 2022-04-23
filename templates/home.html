@@ -12,18 +12,18 @@
 </head>
 
 <body>
-    <h1 class='display-5'>Fetch Rewards Coding Exercise - Backend Software Engineer</h1>
+    <h1 class='display-5 text-center'><mark>Fetch Rewards Coding Exercise - Backend Software Engineer</mark></h1>
 
     <form action="{{url_for('user_spend')}}" method='post'>
-        <div class='container'>
-            <div class='row gy-5'>
-                <div class='col-lg-3 col-md-6'>
-                    <label class='form-label'>How many points will you spend?</label>
+        <div class='container px-0'>
+            <div class='row g-3 align-items-center'>
+                <div class='col-auto'>
+                    <label class='form-label h4'>How many points will you spend?</label>
                 </div>
-                <div class='col-lg-2 col-md-6'>
+                <div class='col-auto'>
                     <input type='text' name='amount' class='form-control'>
                 </div>
-                <div>
+                <div class='col-auto'>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -31,6 +31,25 @@
     </form>
 
     <!--<p id="SpendPoints"></p>-->
+    <!--BUTTON FOR GETTING POINTS FROM -->
+
+    <div>
+        <label class="h4">Collect some points!</label>
+    </div>
+
+    <div class="container px-3">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary" onclick="get_points(1000, 'Dannon')">1000 points</button>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary" onclick="get_points(500, 'Moors')" >500 points</button>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary" onclick="get_points(200, 'Unilever')">200 points</button>
+            </div>
+    </div>
+    <p id="points_added"></p>
 
 <!--BOOTSTRAP JS-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" 
