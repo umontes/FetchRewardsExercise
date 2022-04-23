@@ -95,6 +95,9 @@ def point_sub(amount):
     payer_spend = {}
     index = 0
     
+    if amount > user.points:
+        return "Can't spend more points than you have in your account."
+    
     for payer in Payers.query.order_by(Payers.timestamp):
         while amount != 0:
             if payer.points != 0:
